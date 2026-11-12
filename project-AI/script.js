@@ -1,5 +1,5 @@
 const API_BASE_URL = "http://localhost:3000";
-const requestedId = new URLSearchParams(window.location.search).get("id") || "1";
+const requestedId = new URLSearchParams(window.location.search).get("id") || "999";
 const money = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
 const $ = (selector) => document.querySelector(selector);
 
@@ -137,7 +137,7 @@ async function loadProduct() {
       headers: { Accept: "application/json" },
     });
     if (!response.ok) {
-      throw new Error(response.status === 404 ? "Produk tidak ditemukan" : "HTTP " + response.status);
+      throw new Error(response.status === 404 ? "Produk tidak ditemukan." : "HTTP " + response.status);
     }
     const contentType = response.headers.get("content-type") || "";
     const payload = contentType.includes("json") ? await response.json() : null;
